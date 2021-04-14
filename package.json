@@ -1,0 +1,29 @@
+{
+  "name": "chatventure-bot",
+  "version": "1.0.0",
+  "description": "A discord bot providing a text based adventure",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "firebase-admin": "^9.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MennoGuldemond/chatventure-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Menno Guldemond",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MennoGuldemond/chatventure-bot/issues"
+  },
+  "homepage": "https://github.com/MennoGuldemond/chatventure-bot#readme"
+}
