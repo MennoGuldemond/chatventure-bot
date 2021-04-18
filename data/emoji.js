@@ -3,6 +3,9 @@ const emoji = {
   two: '2️⃣',
   three: '3️⃣',
   four: '4️⃣',
+  yes: '✔️',
+  no: '❌',
+  next: '⏭️',
 };
 
 module.exports = { emoji };

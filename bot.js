@@ -1,8 +1,10 @@
 const dotenv = require('dotenv');
 const { Client } = require('discord.js');
 const { emoji } = require('./data/emoji');
-
+const { User } = require('./scripts/user');
+const messenger = require('./scripts/messenger');
 const firebase = require('./scripts/firebase');
+const levelManager = require('./scripts/level-manager');
 
 dotenv.config();
 const client = new Client();
@@ -14,28 +16,38 @@ client.on('ready', () => {
 
 client.on('message', async (message) => {
   if (message.channel.type === 'dm' && message.author.bot === false) {
-    // console.log(message);
-    // message.react('1️⃣');
-    // message.react('2️⃣');
-    // message.react('3️⃣');
-    // message.react('4️⃣');
-    const myMessage = await message.channel.send('This is a message from me..');
-    myMessage.react(emoji.one);
-    myMessage.react(emoji.two);
-    myMessage.react(emoji.three);
-    myMessage.react(emoji.four);
-    // const userSnapshot = await firebase.getUserSnapshot(message.author.id);
-    // console.log(userSnapshot.val());
+    const userSnapshot = await firebase.getUserSnapshot(message.author.id);
+    if (userSnapshot.val() == null) {
+      firebase.setUser(message.author.id, new User());
+      messenger.send(message, new User());
+    } else {
+      messenger.send(message, userSnapshot.val());
+    }
   }
 });
 
 client.on('messageReactionAdd', async (messageReaction, user) => {
   if (messageReaction.me === false) {
-    // console.log(messageReaction.emoji.name);
-    if (messageReaction.emoji.name === emoji.one) {
-      console.log('Match!!');
+    const userSnapshot = await firebase.getUserSnapshot(user.id);
+    if (userSnapshot.val()) {
+      const currentLevel = levelManager.get(userSnapshot.val());
+      const emojiName = Object.keys(emoji).find(
+        (k) => emoji[k] === messageReaction.emoji.name
+      );
+      if (emojiName) {
+        const chosenOption = currentLevel.options.find(
+          (o) => o.emoji === emojiName
+        );
+        if (chosenOption) {
+          const updatedUser = {
+            ...userSnapshot.val(),
+            level: chosenOption.next,
+          };
+          firebase.setUser(user.id, updatedUser);
+          messenger.send(messageReaction.message, updatedUser);
+        }
+      }
     }
-    // console.log(user);
   }
 });
 

@@ -1,0 +1,40 @@
+[
+  {
+    "level": 1,
+    "text": "Your head hurts.. You open your eyes to see there is barely any light.\nYour leg seems to be stuck under a collapsed bulkhead.",
+    "options": [
+      {
+        "emoji": "one",
+        "text": "Try to pull your leg loose",
+        "next": 2
+      },
+      {
+        "emoji": "two",
+        "text": "Look around to find something to help free yourself",
+        "next": 3
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "text": "You use all your strength to try to pull your leg from underneath the bulkhead, but you end up just hurting yourself. You start looking around for something to help you get free.",
+    "options": [
+      {
+        "emoji": "next",
+        "text": "next",
+        "next": 3
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "text": "You take a moment for your eyes to get used to your dark surroundings..\nYou see an iron bar laying on the floor close to you.\n\nWith some effort you manage to reach it.\nYou wedge it between the bulkhead and the floor.",
+    "options": [
+      {
+        "emoji": "next",
+        "text": "Use the leverage of the bar to move the bulkhead",
+        "next": 4
+      }
+    ]
+  }
+]

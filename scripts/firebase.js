@@ -16,4 +16,9 @@ async function getUserSnapshot(userId) {
   return await ref.once('value');
 }
 
-module.exports = { init, getUserSnapshot };
+async function setUser(id, user) {
+  let ref = db.ref('users');
+  ref.child(id).set(user);
+}
+
+module.exports = { init, getUserSnapshot, setUser };
