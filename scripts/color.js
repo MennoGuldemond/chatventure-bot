@@ -1,8 +1,13 @@
 function getHealthColor(user) {
-  const step = 2.55;
-  const red = Math.round(255 - step * user.health);
-  const green = Math.round(step * user.health);
-  return `${rgbToHex(red)}${rgbToHex(green)}00`;
+  if (user.health > 50) {
+    const red = Math.round(-5.1 * user.health + 510);
+    return `${rgbToHex(red)}${rgbToHex(255)}00`;
+  } else if (user.health < 50) {
+    const green = Math.round(5.1 * (user.health / 2));
+    return `${rgbToHex(255)}${rgbToHex(green)}00`;
+  } else {
+    return `${rgbToHex(255)}${rgbToHex(255)}00`;
+  }
 }
 
 function rgbToHex(rgb) {
