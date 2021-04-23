@@ -1,10 +1,11 @@
 const { MessageEmbed } = require('discord.js');
 const { emoji } = require('../data/emoji');
+const { getHealthColor } = require('./color');
 const levelManager = require('./level-manager');
 
 async function send(message, user) {
   const level = levelManager.get(user);
-  const embed = create(level);
+  const embed = create(level, user);
   try {
     const sendMessage = await message.channel.send(embed);
     level.options.forEach((option) => {
@@ -15,7 +16,7 @@ async function send(message, user) {
   }
 }
 
-function create(level) {
+function create(level, user) {
   const embed = new MessageEmbed();
   try {
     let description = level.text;
@@ -24,7 +25,9 @@ function create(level) {
         level.options[i].text
       }`;
     }
+    embed.setColor(`#${getHealthColor(user)}`);
     embed.setDescription(description);
+    embed.addField('Health', user.health);
   } catch (err) {
     console.error(err);
   }
