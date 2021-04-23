@@ -6,7 +6,10 @@
       {
         "emoji": "one",
         "text": "Try to pull your leg loose",
-        "next": 2
+        "next": 2,
+        "effect": {
+          "health": -25
+        }
       },
       {
         "emoji": "two",
@@ -17,7 +20,7 @@
   },
   {
     "level": 2,
-    "text": "You use all your strength to try to pull your leg from underneath the bulkhead, but you end up just hurting yourself. You start looking around for something to help you get free.",
+    "text": "You use all your strength to try to pull your leg from underneath the bulkhead, but you end up just hurting yourself (-25 health).\nYou start looking around for something to help you get free.",
     "options": [
       {
         "emoji": "next",
@@ -28,12 +31,31 @@
   },
   {
     "level": 3,
-    "text": "You take a moment for your eyes to get used to your dark surroundings..\nYou see an iron bar laying on the floor close to you.\n\nWith some effort you manage to reach it.\nYou wedge it between the bulkhead and the floor.",
+    "text": "You take a moment for your eyes to get used to the dark surroundings..\nYou see an iron bar laying on the floor close to you.\n\nWith some effort you manage to reach it.\nYou wedge it between the bulkhead and the floor.",
     "options": [
       {
         "emoji": "next",
         "text": "Use the leverage of the bar to move the bulkhead",
-        "next": 4
+        "next": 4,
+        "effect": {
+          "health": -10
+        }
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "text": "With a tremendous amount of strength you manage to get yourself free from the bulkhead (-10 health).\nYou take a moment to catch your breath. You notice that you're in a long hallway. Which way should you go?",
+    "options": [
+      {
+        "emoji": "one",
+        "text": "Turn left",
+        "next": 6
+      },
+      {
+        "emoji": "two",
+        "text": "Turn right",
+        "next": 7
       }
     ]
   }
