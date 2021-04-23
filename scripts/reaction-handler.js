@@ -14,7 +14,7 @@ function handleReaction(messageReaction, userSnapshot, user) {
     );
     if (chosenOption) {
       const currentUser = userSnapshot.val();
-      let newHealth = 0;
+      let newHealth = currentUser.health;
       if (chosenOption.effect) {
         if (chosenOption.effect.health) {
           newHealth = currentUser.health + chosenOption.effect.health;
